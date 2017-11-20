@@ -25,7 +25,7 @@ export default class PhotoUpload extends React.Component {
 
   state = {
     height: this.props.height || 300,
-    width: this.props.width || 300,
+    width: this.props.width || 400,
     format: this.props.format || 'JPEG',
     quality: this.props.quality || 80
   }
@@ -77,7 +77,8 @@ export default class PhotoUpload extends React.Component {
 
       // handle photo in props functions as data string
       if (this.props.onPhotoSelect) {
-        this.props.onPhotoSelect(photoData, response)
+        console.log('resizedImageUri ======>' , resizedImageUri )
+        this.props.onPhotoSelect(photoData, response, source)
       }
     })
   }
