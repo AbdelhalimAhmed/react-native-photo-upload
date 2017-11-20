@@ -10,6 +10,7 @@ import {
 import ImagePicker from 'react-native-image-picker'
 import ImageResizer from 'react-native-image-resizer'
 import RNFS from 'react-native-fs'
+import FIcon from 'react-native-vector-icons/FontAwesome'
 
 export default class PhotoUpload extends React.Component {
   static propTypes = {
@@ -102,11 +103,7 @@ export default class PhotoUpload extends React.Component {
         >
           {this.props.normalButton
             ? <Text style={styles.buttonText}>Create Laugh</Text>
-            : <FIcon
-              name={this.props.icon || 'plus'}
-              style={styles.plusIcon}
-              size={15}
-              />}
+            : this.renderChildren(this.props)}
         </TouchableOpacity>
       </View>
     )
