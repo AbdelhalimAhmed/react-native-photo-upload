@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1
   },
   buttonText: {
-    color: Colors.snow,
+    color: 'white',
     fontSize: 18
   },
 })
