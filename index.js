@@ -77,8 +77,18 @@ export default class PhotoUpload extends React.Component {
 
       // handle photo in props functions as data string
       if (this.props.onPhotoSelect) {
-        console.log('resizedImageUri ======>' , resizedImageUri )
-        this.props.onPhotoSelect(photoData, response, source)
+        let tempImage = {
+          uri: `data:${response.type};base64,` + photoData,
+          width: response.width,
+          height: response.height,
+          data: response.data,
+          type: response.type,
+          name: resizedImageUri.name,
+          path: filePath,
+          size: resizedImageUri.size
+        }
+        console.log('tempImage ======>' , tempImage )
+        this.props.onPhotoSelect(tempImage)
       }
     })
   }
