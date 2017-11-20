@@ -76,7 +76,7 @@ export default class PhotoUpload extends React.Component {
 
       // handle photo in props functions as data string
       if (this.props.onPhotoSelect) {
-        this.props.onPhotoSelect(photoData, respose)
+        this.props.onPhotoSelect(photoData, response)
       }
     })
   }
@@ -94,8 +94,19 @@ export default class PhotoUpload extends React.Component {
   render () {
     return (
       <View style={[styles.container, this.props.containerStyle]}>
-        <TouchableOpacity onPress={this.openImagePicker}>
-          {this.renderChildren(this.props)}
+        <TouchableOpacity
+          style={
+            this.props.normalButton ? styles.normalButton : styles.floatButton
+          }
+          onPress={this.openImagePicker}
+        >
+          {this.props.normalButton
+            ? <Text style={styles.buttonText}>Create Laugh</Text>
+            : <FIcon
+              name={this.props.icon || 'plus'}
+              style={styles.plusIcon}
+              size={15}
+              />}
         </TouchableOpacity>
       </View>
     )
@@ -107,5 +118,35 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  floatButton: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 55,
+    height: 55,
+    bottom: 10,
+    right: 20,
+    backgroundColor: Colors.main,
+    borderRadius: 27.5,
+    elevation: 8,
+    shadowColor: 'black',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1
+  },
+  normalButton: {
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // width: 55,
+    borderRadius: 3,
+    paddingHorizontal: 8,
+    paddingVertical: 10,
+    height: undefined,
+    backgroundColor: Colors.main,
+    shadowColor: 'black',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1
   }
 })
