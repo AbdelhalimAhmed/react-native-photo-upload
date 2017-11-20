@@ -124,7 +124,6 @@ export default class PhotoUpload extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -157,5 +156,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 1
-  }
+  },
+  buttonText: {
+    color: Colors.snow,
+    fontSize: 18
+  },
 })
