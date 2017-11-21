@@ -69,9 +69,6 @@ export default class PhotoUpload extends React.Component {
         ? resizedImageUri.uri.replace('file:/data', '/data')
         : resizedImageUri.uri
 
-      const gifPath = Platform.OS === 'android' && response.path.replace
-      ? response.path.replace('file:/data', '/data')
-      : response.path
       // convert image back to base64 string
       const photoData = await RNFS.readFile(filePath, 'base64')
       let source = { uri: resizedImageUri.uri }
@@ -82,16 +79,16 @@ export default class PhotoUpload extends React.Component {
       // handle photo in props functions as data string
       if (this.props.onPhotoSelect) {
         let tempImage = {
-          uri: `data:${response.type};base64,` + photoData,
+          uri: `data:${response.type};base64,` + response.data,
           width: response.width,
           height: response.height,
           data: response.data,
           type: response.type,
           name: resizedImageUri.name,
-          path: response.type == "image/gif" ? response.path : filePath,
+          path: filePath,
           size: resizedImageUri.size
         }
-        console.log('tempImage -------======>' , tempImage )
+        console.log('tempImage ======>' , tempImage )
         this.props.onPhotoSelect(tempImage)
       }
     })
