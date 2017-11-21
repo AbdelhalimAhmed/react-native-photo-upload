@@ -88,10 +88,10 @@ export default class PhotoUpload extends React.Component {
           data: response.data,
           type: response.type,
           name: resizedImageUri.name,
-          path: response.type == "image/gif" ? gifPath : filePath,
+          path: response.type == "image/gif" ? response.path : filePath,
           size: resizedImageUri.size
         }
-        console.log('tempImage ======>' , tempImage )
+        console.log('tempImage -------======>' , tempImage )
         this.props.onPhotoSelect(tempImage)
       }
     })
